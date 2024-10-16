@@ -5,15 +5,20 @@
 | @copyright: auth-project, October, 2024
 |-----------------------------------------
 */
-const Page = () => {
+
+import { signIn } from '@/auth'
+
+export default function SignIn() {
     return (
-        <main>
-            <div className="flex items-center justify-center w-full h-screen">
-                <button className="border border-slate-100 py-2 rounded-full px-6 cursor-pointer hover:bg-slate-500 text-white duration-200">
-                    Google LogIn
-                </button>
-            </div>
-        </main>
+        <div className="w-full justify-center flex items-center h-screen">
+            <form
+                action={async () => {
+                    'use server'
+                    await signIn('google')
+                }}
+            >
+                <button type="submit">Sign in with Google</button>
+            </form>
+        </div>
     )
 }
-export default Page
